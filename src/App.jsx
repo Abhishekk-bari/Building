@@ -1,12 +1,13 @@
-import React, { useRef } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import React, { useRef } from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
-import Navbar from './components/Navbar/Navbar';
-import Home from './components/Home/Home';
-import Footer from './components/Footer/Footer';
-import About from './components/About/About';
-import Contact from './components/Contact/Contact';
-import Dashboard from './components/Dashboard/Dashboard';
+import Navbar from "./components/Navbar/Navbar";
+import Home from "./components/Home/Home";
+import Footer from "./components/Footer/Footer";
+import About from "./components/About/About";
+import Contact from "./components/Contact/Contact";
+import Dashboard from "./components/Dashboard/Dashboard";
+import Setting from './pages/Setting';
 
 const App = () => {
   const homeRef = useRef(null);
@@ -17,7 +18,7 @@ const App = () => {
   const scrollToSection = (elementRef) => {
     window.scrollTo({
       top: elementRef.current ? elementRef.current.offsetTop : 0,
-      behavior: 'smooth',
+      behavior: "smooth",
     });
   };
 
@@ -31,8 +32,17 @@ const App = () => {
       />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/dashboard" element={isAuthenticated ? <Dashboard /> : <Home />} />
+        <Route
+          path="/dashboard"
+          element={isAuthenticated ? <Dashboard /> : <Home />}
+        />
+        <Route
+          path="/Setting"
+          element={isAuthenticated ? <Setting /> : <Home />}
+        />
+        <Route path="/Setting" element={<Setting />} />
       </Routes>
+
       {/* Only show these components when not authenticated */}
       {!isAuthenticated && (
         <>

@@ -1,7 +1,5 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-
-
+import React from "react";
+import { motion } from "framer-motion";
 
 const Home = () => {
   return (
@@ -30,9 +28,11 @@ const Home = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.6 }}
         >
-          Our platform streamlines your job search by keeping all your applications organized in one place. Stay on top of your job applications and land your dream job effortlessly.
+          Our platform streamlines your job search by keeping all your
+          applications organized in one place. Stay on top of your job
+          applications and land your dream job effortlessly.
         </motion.p>
-        
+
         <motion.button
           className="mt-8 px-4 py-2 bg-indigo-500 text-white rounded-full hover:bg-indigo-600 transition duration-300"
           initial={{ opacity: 0, scale: 0.8 }}

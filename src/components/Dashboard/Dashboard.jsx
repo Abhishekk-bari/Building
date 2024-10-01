@@ -1,27 +1,19 @@
 import { useAuth0 } from "@auth0/auth0-react";
-import { FaHome } from "react-icons/fa";
+import Setting from "../../pages/Setting";
+import Logout from "../../pages/logout/Logout";
 
 const Dashboard = () => {
   const { logout } = useAuth0();
 
   return (
-    <aside className="h-screen">
-        <nav className="h-full flex flex-col bg-white border-r shadow-sm">
-          <div className="p-4 pb-2 flex justify-between item-center">
-            Track
+    <aside className="h-screen flex-row flex ">
+      <nav className="">
+        <div className="p-4 pb-2 ">Track</div>
 
-          </div>
-          <button
-        onClick={() =>
-          logout({ logoutParams: { returnTo: window.location.origin } })
-        }
-        className="cursor-pointer hover:text-indigo-500 transition duration-300 text-black"
-      >
-        Log Out
-      </button>
+        <Logout />
+        <Setting />
+      </nav>
 
-        </nav>
-      
       
     </aside>
   );

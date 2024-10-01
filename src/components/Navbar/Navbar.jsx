@@ -18,78 +18,78 @@ const Navbar = ({ scrollToSection, homeRef, aboutRef, contactRef }) => {
 
   return (
     shouldRenderNavbar && (
-      <nav className="md:flex-row flex justify-center items-center mx-4 px-8 py-3 bg-opacity-30 backdrop-filter backdrop-blur-lg bg-gray-500 rounded-lg fixed top-4 left-1/2 transform -translate-x-1/2 z-50">      
-      <div className="text-2xl font-bold text-black">
-        Tr<span className="text-black cursor-pointer">ack</span>
-      </div>
+      <nav className="md:flex-row flex justify-center items-center mx-4 px-8 py-3 bg-opacity-30 backdrop-filter backdrop-blur-lg bg-gray-500 rounded-lg fixed top-4 left-1/2 transform -translate-x-1/2 z-50">
+        <div className="text-2xl font-bold text-black">
+          Tr<span className="text-black cursor-pointer">ack</span>
+        </div>
 
-      <ul className="flex space-x-8 text-lg text-gray-800 ml-20">
-        {!isAuthenticated && (
-          <>
+        <ul className="flex space-x-8 text-lg text-gray-800 ml-20">
+          {!isAuthenticated && (
+            <>
+              <li>
+                <Link
+                  to="/"
+                  onClick={() => scrollToSection(homeRef)}
+                  className="cursor-pointer hover:text-indigo-500 transition duration-300"
+                >
+                  Home
+                </Link>
+              </li>
+              <li>
+                <button
+                  onClick={() => scrollToSection(aboutRef)}
+                  className="cursor-pointer hover:text-indigo-500 transition duration-300"
+                >
+                  About Us
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => scrollToSection(contactRef)}
+                  className="cursor-pointer hover:text-indigo-500 transition duration-300"
+                >
+                  Contact
+                </button>
+              </li>
+            </>
+          )}
+
+          {isAuthenticated && (
             <li>
               <Link
-                to="/"
-                onClick={() => scrollToSection(homeRef)}
-                className="cursor-pointer hover:text-indigo-500 transition duration-300"
+                to="/dashboard"
+                className="cursor-pointer hover:text-indigo-200 transition duration-300"
               >
-                Home
+                Dashboard
               </Link>
             </li>
-            <li>
-              <button
-                onClick={() => scrollToSection(aboutRef)}
-                className="cursor-pointer hover:text-indigo-500 transition duration-300"
-              >
-                About Us
-              </button>
-            </li>
-            <li>
-              <button
-                onClick={() => scrollToSection(contactRef)}
-                className="cursor-pointer hover:text-indigo-500 transition duration-300"
-              >
-                Contact
-              </button>
-            </li>
-          </>
-        )}
-        
-        {isAuthenticated && (
-          <li>
-            <Link
-              to="/dashboard"
-              className="cursor-pointer hover:text-indigo-200 transition duration-300"
+          )}
+        </ul>
+
+        <div className="ml-8">
+          {isAuthenticated && <p className="text-white"> {user.name} </p>}
+        </div>
+
+        <div className="ml-5 text-lg">
+          {isAuthenticated ? (
+            <button
+              onClick={() =>
+                logout({ logoutParams: { returnTo: window.location.origin } })
+              }
+              className="cursor-pointer hover:text-indigo-500 transition duration-300 text-white"
             >
-              Dashboard
-            </Link>
-          </li>
-        )}
-      </ul>
-
-      <div className="ml-8">
-        {isAuthenticated && <p className="text-white"> {user.name} </p>}
-      </div>
-
-      <div className="ml-5 text-lg">
-        {isAuthenticated ? (
-          <button
-            onClick={() =>
-              logout({ logoutParams: { returnTo: window.location.origin } })
-            }
-            className="cursor-pointer hover:text-indigo-500 transition duration-300 text-white"
-          >
-            Log Out
-          </button>
-        ) : (
-          <button
-            onClick={() => loginWithRedirect()}
-            className="cursor-pointer  hover:text-gray-900 transition duration-300 text-white"
-          >
-            Log In
-          </button>
-        )}
-      </div>
-    </nav>
+              Log Out
+            </button>
+          ) : (
+            <button
+              onClick={() => loginWithRedirect()}
+              className="cursor-pointer  hover:text-gray-900 transition duration-300 text-white"
+            >
+              Log In
+            </button>
+          )}
+        </div>
+      </nav>
     )
   );
 };
