@@ -7,7 +7,7 @@ import Footer from "./components/Footer/Footer";
 import About from "./components/About/About";
 import Contact from "./components/Contact/Contact";
 import Dashboard from "./components/Dashboard/Dashboard";
-import Setting from './pages/Setting';
+import Create from "./pages/Create/Create";
 
 const App = () => {
   const homeRef = useRef(null);
@@ -24,23 +24,29 @@ const App = () => {
 
   return (
     <Router>
+
       <Navbar
         scrollToSection={scrollToSection}
         homeRef={homeRef}
         aboutRef={aboutRef}
         contactRef={contactRef}
       />
+
       <Routes>
+
         <Route path="/" element={<Home />} />
         <Route
           path="/dashboard"
           element={isAuthenticated ? <Dashboard /> : <Home />}
         />
-        <Route
+
+<Route path="/create" element={<Create />} />
+        {/* Uncomment the following routes if needed */}
+        {/* <Route
           path="/Setting"
           element={isAuthenticated ? <Setting /> : <Home />}
         />
-        <Route path="/Setting" element={<Setting />} />
+        <Route path="/Setting" element={<Setting />} /> */}
       </Routes>
 
       {/* Only show these components when not authenticated */}
