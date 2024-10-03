@@ -1,11 +1,13 @@
-import React from "react";
+// src/pages/Create/Create.jsx
+import React from 'react';
 
-function Create() {
+const Create = () => {
   return (
     <div>
-      <h1>Welcome to the Create Page</h1>
+      <h1>Create Page</h1>
+      {/* Add your create form or content here */}
     </div>
   );
-}
+};
 
 export default Create;

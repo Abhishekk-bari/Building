@@ -1,3 +1,4 @@
+// src/App.js
 import React, { useRef } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -6,8 +7,9 @@ import Home from "./components/Home/Home";
 import Footer from "./components/Footer/Footer";
 import About from "./components/About/About";
 import Contact from "./components/Contact/Contact";
-import Dashboard from "./components/Dashboard/Dashboard";
-import Create from "./pages/Create/Create";
+import Dashboard from "./components/Dashboard/Dashboard"; // Import Dashboard
+import Create from "./pages/Create/Create"; // Import Create
+import Setting from './pages/setting/Setting'; // Import Settings
 
 const App = () => {
   const homeRef = useRef(null);
@@ -24,7 +26,6 @@ const App = () => {
 
   return (
     <Router>
-
       <Navbar
         scrollToSection={scrollToSection}
         homeRef={homeRef}
@@ -33,20 +34,23 @@ const App = () => {
       />
 
       <Routes>
-
         <Route path="/" element={<Home />} />
-        <Route
-          path="/dashboard"
-          element={isAuthenticated ? <Dashboard /> : <Home />}
+        
+        {/* Ensure this route is present for Dashboard */}
+        <Route 
+          path="/dashboard" 
+          element={isAuthenticated ? <Dashboard /> : <Home />} 
         />
 
-<Route path="/create" element={<Create />} />
-        {/* Uncomment the following routes if needed */}
-        {/* <Route
-          path="/Setting"
-          element={isAuthenticated ? <Setting /> : <Home />}
+        {/* Ensure this route is present for Create */}
+        <Route path="/create" element={isAuthenticated ? <Create /> : <Home />} />
+
+        {/* Ensure this route is present for Settings */}
+        <Route 
+          path="/settings" 
+          element={isAuthenticated ? <Setting /> : <Home />} 
         />
-        <Route path="/Setting" element={<Setting />} /> */}
+        
       </Routes>
 
       {/* Only show these components when not authenticated */}
